@@ -4,7 +4,7 @@
       <div class="header">
       <div class="top"></div>
       <div class='top-text'>图像文字识别系统</div>
-      <el-button type='text' class="exit" @click="loginOut">退出系统</el-button>
+      <el-button type='text' class="exit" @click="loginOut">关闭窗口</el-button>
     </div>
       
     </el-header>
@@ -79,7 +79,7 @@
 
         methods: {
           loginOut(){
-            this.$router.push({path:'/'})
+            window.open('','_self').close();
           },
           goback(){
               this.resultShow=!this.resultShow;
@@ -226,7 +226,7 @@
         z-index: 7;
         width: 25rem;
         height: 50rem;
-        bottom:13rem;
+        bottom:10rem;
         left: 67%;
       }
       .bamboo2{
@@ -242,7 +242,7 @@
         z-index: 7;
         width: 20rem;
         height: 18rem;
-        bottom:13rem;
+        bottom:10rem;
         left: 7%;
       }
       .panda2{
@@ -258,7 +258,7 @@
         z-index: 7;
         width: 100%;
         height: 2rem;
-        bottom:13rem;
+        bottom:10rem;
         left:0
       }
       .grass2{
@@ -281,7 +281,7 @@
         position: absolute;
         width:100%;
         height:5rem;
-        top:28rem;
+        top:32rem;
         font-size: 1rem;
         text-align: center;
         line-height: 1.5rem;
