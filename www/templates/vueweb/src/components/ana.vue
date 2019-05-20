@@ -96,11 +96,11 @@
             if(this.response){
               console.log(this.response);
               if(this.response.status=="200"){
-                alert("解析成功");
+                this.$message.success("解析成功");
                 that.result=this.response.text;
                 that.dialogVisible=false;
               }else{
-                alert("解析失败，请检查文件格式并重新上传");
+                this.$message.error("解析失败，请检查文件格式并重新上传");
                 that.dialogVisible=false;
               } 
               }
@@ -120,7 +120,7 @@
               this.resultShow=!this.resultShow;
               }
               else{
-                alert("您还未选择文件");
+                this.$message.warning("您还未选择文件");
               }
               
             },
@@ -128,15 +128,18 @@
                 this.$refs.upload.clearFiles();
             },
             copy(){
-              var Url2=document.getElementById("result").innerText;
-              var oInput = document.createElement('input');
-              oInput.value = Url2;
-              document.body.appendChild(oInput);
-              oInput.select(); // 选择对象
-              document.execCommand("Copy"); // 执行浏览器复制命令
-              oInput.className = 'oInput';
-              oInput.style.display='none';
-              alert('复制成功');
+              const btn = document.querySelector('#btn');
+              btn.addEventListener('click', () => {
+                const input = document.querySelector('#result');
+                input.select();
+                if (document.execCommand('copy')) {
+                  document.execCommand('copy');
+                  this.$message.success(`复制成功`);
+                }
+                else{
+                  this.$message.warning(`该浏览器暂不支持自动复制，请手动复制`);
+                }
+              })
             }
         },
          refresh() {
@@ -198,7 +201,7 @@
         left:0;
       }
       .cloud{
-        position: absolute;
+        position: fixed;
         z-index: 1;
         top: -2.4rem;
         left: -10%;
@@ -210,7 +213,7 @@
         background-repeat: no-repeat;
       }
       .cloud2{
-        position: absolute;
+        position: fixed;
         z-index: 1;
         top: -2.4rem;
         left: 20%;
@@ -222,7 +225,7 @@
         background-repeat: no-repeat;
       }
       .bamboo{
-        position: absolute;
+        position: fixed;
         z-index: 7;
         width: 25rem;
         height: 50rem;
@@ -230,7 +233,7 @@
         left: 67%;
       }
       .bamboo2{
-        position: absolute;
+        position: fixed;
         z-index: 7;
         width: 25rem;
         height: 50rem;
@@ -238,7 +241,7 @@
         left: 67%;
       }
       .panda{
-        position: absolute;
+        position: fixed;
         z-index: 7;
         width: 20rem;
         height: 18rem;
@@ -246,7 +249,7 @@
         left: 7%;
       }
       .panda2{
-        position: absolute;
+        position: fixed;
         z-index: 7;
         width: 22rem;
         height: 20rem;
@@ -254,7 +257,7 @@
         left: 7%;
       }
       .grass{
-        position: absolute;
+        position: fixed;
         z-index: 7;
         width: 100%;
         height: 2rem;
@@ -262,15 +265,15 @@
         left:0
       }
       .grass2{
-        position: absolute;
+        position: fixed;
         z-index: 7;
         width: 100%;
-        height: 2rem;
+        height: 2.2rem;
         bottom:0rem;
         left:0
       }
       .upload{
-        position: absolute;
+        position: fixed;
         height:15rem;
         width: 100%;
         top:10rem;
@@ -278,7 +281,7 @@
         z-index:7;
       }
       .biaoti{
-        position: absolute;
+        position: fixed;
         width:100%;
         height:5rem;
         top:32rem;
@@ -289,7 +292,7 @@
         font-family: "OpenSans",sans-serif;
       }
       .result{
-        position: absolute;
+        position: fixed;
         width:100%;
         height:5rem;
         top:10rem;
@@ -305,7 +308,7 @@
         height: 30rem;
       }
       .result-button{
-        position:absolute;
+        position:fixed;
         width:100%;
         height:5rem;
         top:30rem;
