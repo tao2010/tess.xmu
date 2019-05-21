@@ -4,7 +4,7 @@
       <div class="header">
       <div class="top"></div>
       <div class='top-text'>图像文字识别系统</div>
-      <el-button type='text' class="exit" @click="loginOut">关闭窗口</el-button>
+      <el-button type='text' class="exit" @click="loginOut()">关闭窗口</el-button>
     </div>
       
     </el-header>
@@ -45,7 +45,7 @@
           
       </div>
       <div v-if="!resultShow" class="biaoti">
-        <el-button type="success" @click='refersh()'>重置</el-button>
+        <el-button type="success" @click='refresh()'>重置</el-button>
         <el-button type="primary" @click='submitUpload()'>解析</el-button>
       </div>
       <div v-else>
@@ -79,10 +79,18 @@
 
         methods: {
           loginOut(){
-            window.open('','_self').close();
+            if (navigator.userAgent.indexOf("Firefox") != -1 || navigator.userAgent.indexOf("Chrome") !=-1) {
+              window.location.href="about:blank";
+              window.close();
+              } else {
+                window.opener = null;
+                window.open("", "_self");
+                window.close();
+                }
           },
           goback(){
-              this.resultShow=!this.resultShow;
+           this.length=0;
+           this.resultShow=!this.resultShow;
           },
          handleAvatarSuccess(res, file) {
             this.iUrl = URL.createObjectURL(file.raw);
@@ -126,6 +134,8 @@
             },
             refresh() {
                 this.$refs.upload.clearFiles();
+                this.response=[];
+                this.length=0;
             },
             copy(){
               const btn = document.querySelector('#btn');
@@ -142,10 +152,6 @@
               })
             }
         },
-         refresh() {
-           this.$refs.upload.clearFiles();
-           this.response=[];
-            },
         mounted(){
           document.querySelector('body').setAttribute('style', 'background-color:#e7f0f3')
         },
