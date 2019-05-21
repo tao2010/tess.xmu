@@ -90,6 +90,8 @@
           },
           goback(){
            this.length=0;
+           this.response=[];
+           this.result="";
            this.resultShow=!this.resultShow;
           },
          handleAvatarSuccess(res, file) {
