@@ -3,4 +3,6 @@
 
 
 后台部分入口地址为run.py
-前端部分启动地址为www/templates/vueweb
+
+
+前端部分启动地址为www/templates/vueweb ->npm run dev
