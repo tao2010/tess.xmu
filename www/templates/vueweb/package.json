@@ -14,7 +14,7 @@
     "element-ui": "^2.8.2",
     "file-save": "^0.2.0",
     "file-saver": "^2.0.2",
-    "jszip": "^3.2.1",
+    "jszip": "^3.7.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1"
